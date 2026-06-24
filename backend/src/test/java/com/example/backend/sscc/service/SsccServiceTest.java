@@ -41,7 +41,7 @@ public class SsccServiceTest {
         when(validationService.validate(INPUT_SSCC, null)).thenReturn(PARSED_SSCC);
         when(storageService.add(PARSED_SSCC)).thenReturn(true);
 
-        SsccResponseDto result = ssccService.saveSscc(INPUT_SSCC, null);
+        SsccResponseDto result = ssccService.save(INPUT_SSCC, null);
 
         assertEquals(PARSED_SSCC, result.sscc());
         verify(validationService).validate(INPUT_SSCC, null);
@@ -54,7 +54,7 @@ public class SsccServiceTest {
         when(validationService.validate(PARSED_SSCC, COMPANY_PREFIX)).thenReturn(PARSED_SSCC);
         when(storageService.add(PARSED_SSCC)).thenReturn(true);
 
-        SsccResponseDto result = ssccService.saveSscc(PARSED_SSCC, COMPANY_PREFIX);
+        SsccResponseDto result = ssccService.save(PARSED_SSCC, COMPANY_PREFIX);
 
         assertEquals(PARSED_SSCC, result.sscc());
         verify(validationService).validate(PARSED_SSCC, COMPANY_PREFIX);
@@ -67,7 +67,7 @@ public class SsccServiceTest {
         when(storageService.add(PARSED_SSCC)).thenReturn(false);
 
         CustomException ex = assertThrows(CustomException.class,
-                () -> ssccService.saveSscc(INPUT_SSCC, null));
+                () -> ssccService.save(INPUT_SSCC, null));
 
         assertEquals(ValidationError.DUPLICATE, ex.getErrorCode());
         assertEquals(HttpStatus.CONFLICT, ex.getStatus());
@@ -82,7 +82,7 @@ public class SsccServiceTest {
                         ValidationError.INVALID_CHECK_DIGIT, "Check digit mismatch"));
 
         assertThrows(CustomException.class,
-                () -> ssccService.saveSscc(INPUT_SSCC, null));
+                () -> ssccService.save(INPUT_SSCC, null));
 
         verify(storageService, never()).add(any());
     }

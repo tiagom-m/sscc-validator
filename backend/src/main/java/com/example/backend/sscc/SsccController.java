@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -33,7 +34,7 @@ public class SsccController {
     }
 
     @GetMapping
-    @Operation(summary = "List all valid SSCCs")
+    @Operation(summary = "List all saved SSCCs")
     public ResponseEntity<List<String>> getAll() {
         return ResponseEntity.ok(storageService.getAll());
     }
@@ -42,7 +43,14 @@ public class SsccController {
     @Operation(summary = "Saves a valid SSCC", description = "Validates format, length, and check digit. If valid, stores it")
     public ResponseEntity<SsccResponseDto> validate(@RequestBody SsccRequestDto request) {
         return ResponseEntity.status(HttpStatus.CREATED).body(
-                ssccService.saveSscc(request.sscc(), request.gs1Prefix()));
+                ssccService.save(request.sscc(), request.gs1Prefix()));
+    }
+
+    @DeleteMapping
+    @Operation(summary = "Clear all saved SSCCs", description = "Removes all SSCCs from the in-memory list")
+    public ResponseEntity<Void> clearAll() {
+        storageService.clear();
+        return ResponseEntity.noContent().build();
     }
 
 }

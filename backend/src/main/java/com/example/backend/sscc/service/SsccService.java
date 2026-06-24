@@ -19,7 +19,7 @@ public class SsccService {
         this.storageService = storageService;
     }
 
-    public SsccResponseDto saveSscc(String sscc, String gs1Prefix) {
+    public SsccResponseDto save(String sscc, String gs1Prefix) {
 
         // Parsed and validated SSCC
         String result = validationService.validate(sscc, gs1Prefix);
@@ -35,4 +35,6 @@ public class SsccService {
 
         return SsccResponseDto.success(result);
     }
+
+
 }

@@ -114,4 +114,21 @@ public class SsccControllerTest {
         assertThat(saved).hasSize(2);
     }
 
+    void clearAll() throws Exception {
+
+        storageService.add("340123450000000017");
+        storageService.add("376130321109103420");
+
+        List<String> saved = storageService.getAll();
+        assertThat(saved).hasSize(2);
+
+        // DELETE /api/v1/sscc
+        restTestClient.delete()
+                .uri("/api/v1/sscc")
+                .exchange()
+                .expectStatus().isNoContent();
+
+        List<String> empty = storageService.getAll();
+        assertThat(empty).hasSize(0);
+    }
 }
