@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SSCC Validator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Serial Shipping Container Code (SSCC) Validator</h1>
+      <p class="subtitle">
+        Enter an 18-digit Serial Shipping Container Code to validate
+      </p>
+
+            <p class="sscc-example">
+        Examples: 340123450000000017 - 340123450000000024 - 340123450000000031 -
+        340123450000000048
+      </p>
+
+      <!-- Input area -->
+      <div class="input-section">
+        <label for="sscc-input">Serial Shipping Container Code</label>
+        <div class="input-row">
+          <input
+            type="text"
+            id="sscc-input"
+            placeholder="e.g. 340123450000000017"
+            maxlength="20"
+            autocomplete="off"
+          />
+          <button id="validate-btn">Validate</button>
+        </div>
+      </div>
+
+      <!-- Validation result -->
+      <div id="result" class="result"></div>
+
+      <!-- List of valid SSCCs -->
+      <div class="list-section">
+        <div class="list-header">
+          <h2>Valid SSCCs</h2>
+          <div class="list-actions">
+            <span id="count" class="count">0</span>
+            <button id="clear-btn" class="clear-btn" style="display: none">
+              Clear
+            </button>
+          </div>
+        </div>
+        <div id="empty-state" class="empty-state">
+          No valid SSCCs yet. Enter a code above to get started
+        </div>
+        <ul id="sscc-list" class="sscc-list"></ul>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>

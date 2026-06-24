@@ -4,11 +4,14 @@ services:
     container_name: backend
     ports:
       - "8080:8080"
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/v3/api-docs"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      backend:
+        condition: service_started
 
   tests:
     image: eclipse-temurin:25-jdk
@@ -19,7 +22,7 @@ services:
       - maven-cache:/root/.m2
     command: ./mvnw test
     profiles:
-      - test
+      - tests
 
 volumes:
   maven-cache:
