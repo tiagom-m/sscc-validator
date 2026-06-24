@@ -25,10 +25,12 @@ public class SsccStorageService {
         return Collections.unmodifiableList(new ArrayList<>(validSsccs));
     }
 
-    
-
     public void clear() {
         validSsccs.clear();
+    }
+
+    public int count() {
+        return validSsccs.size();
     }
 
 }
