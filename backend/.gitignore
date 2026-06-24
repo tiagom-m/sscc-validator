@@ -3,12 +3,6 @@ target/
 .mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
-.DS_Store
-Thumbs.db
-
-.env
-*.pem
-*.key
 
 ### STS ###
 .apt_generated
@@ -38,15 +32,3 @@ build/
 ### VS Code ###
 .vscode/
 
-# Compiled Java files
-*.class
-
-# Packaged artifacts
-*.jar
-*.war
-*.ear
-
-# Logs
-*.log
-
-target/

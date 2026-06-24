@@ -1,2 +1,2 @@
-# nve-validator
-NVE validator
+# SSCC-validator
+SSCC validator
