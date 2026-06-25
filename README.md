@@ -90,7 +90,7 @@ Check Swagger documentation on `http://localhost:8080/swagger-ui.html`
 | `NON_NUMERIC`         | 422    | Contains non-digit characters                    |
 | `INVALID_CHECK_DIGIT` | 422    | GS1 mod-10 check digit does not match            |
 | `PREFIX_MISMATCH`     | 422    | GS1 company prefix does not match provided value |
-| `DUPLICATE`           | 409    | SSCC already exists in the stored list           |
+| `DUPLICATE`           | 409    | SSCC already exists in the saved list           |
 
 ## Getting Started
 
@@ -141,7 +141,7 @@ docker compose run --rm tests
 
 - **Validation service** — `SsccValidationService` has no dependencies. It can be extracted into a shared library for reuse in future projects.
 - **Services throw errors, GlobalExceptionHandler translates those** — exceptions are propagated - the `GlobalExceptionHandler` maps them to appropriate HTTP status code and message.
-- **In-memory storage** — The list clears when the application restarts and values are not stored.
+- **In-memory storage** — The list clears when the application restarts and values are not saved.
 - **No CORS needed** — nginx reverse-proxies all API calls, so the browser only communicates with a single origin. No CORS headers needed on the backend.
 - **Separate applications** — backend and frontend are fully independent, communicating via HTTP. This reinforces the microservice architecture.
 - **Input sanitization** — the validator strips dashes, spaces, parentheses, and the `00` GS1 identifier before validation, accepting common barcode scanner output formats.
