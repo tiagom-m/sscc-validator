@@ -1,8 +1,8 @@
 package com.example.backend.sscc.util;
 
 public class SsccValidationUtils {
- 
-        /**
+
+    /**
      * Calculates the GS1 mod-10 check digit for a 17-digit data string
      *
      * Algorithm (GS1 General Specifications):

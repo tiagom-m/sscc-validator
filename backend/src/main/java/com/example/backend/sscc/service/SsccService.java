@@ -36,5 +36,4 @@ public class SsccService {
         return SsccResponseDto.success(result);
     }
 
-
 }
