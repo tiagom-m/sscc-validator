@@ -150,3 +150,4 @@ docker compose run --rm tests
 
 - **Persistence** — replace in-memory storage with a database to persist the values.
 - **Tests** — Improve and expande tests to include new scenarios.
+- **Rate limiting** — add request throttling to prevent abuse of the validation endpoint.
