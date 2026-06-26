@@ -143,7 +143,7 @@ docker compose run --rm tests
 - **Services throw errors, GlobalExceptionHandler translates those** — exceptions are propagated - the `GlobalExceptionHandler` maps them to appropriate HTTP status code and message.
 - **In-memory storage** — The list clears when the application restarts and values are not saved.
 - **No CORS needed** — nginx reverse-proxies all API calls, so the browser only communicates with a single origin. No CORS headers needed on the backend.
-- **Separate applications** — backend and frontend are fully independent, communicating via HTTP. This reinforces the microservice architecture.
+- **Separate applications** — backend and frontend are fully independent, communicating via HTTP.
 - **Input sanitization** — the validator strips dashes, spaces, parentheses, and the `00` GS1 identifier before validation, accepting common barcode scanner output formats.
 
 ## Future Work
