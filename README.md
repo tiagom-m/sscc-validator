@@ -32,7 +32,7 @@ An SSCC is an 18-digit numeric code defined by the GS1 standard. The validation 
 1. **Not empty** — input from user must be present (not blank)
 2. **Sanitization** — removes dashes, spaces, and parentheses if present. Also removes leading `00` if found. These are used to indicate that the following 18 digits comprise an SSCC
 3. **Length** — must be exactly 18 digits after sanitization
-4. **Numeric** — must contain only digits
+4. **Numeric values only** — must contain only digits
 5. **Check digit** — the 18th digit must match the GS1 mod-10 check digit calculated from the first 17 digits
 6. **GS1 (company) prefix** _(optional validation)_ — if a company GS1 prefix is provided, it must match the prefix embedded in the SSCC (starting at position 2)
 
